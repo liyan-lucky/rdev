@@ -39,8 +39,10 @@ epoll = {version = "4.1.0"}
 # evdev-rs = {version = "0.6.0"}
 inotify = {version = "0.10.0", default-features = false}
 libc = "0.2"
-x11 = {version = "2.18", features = ["xlib", "xrecord", "xinput"]}
 mio = {version = "0.8.4", features = ["os-poll", "os-ext"]}
+
+[target.'cfg(all(target_os = "linux", not(target_env = "ohos")))'.dependencies]
+x11 = {version = "2.18", features = ["xlib", "xrecord", "xinput"]}
 
 [target.'cfg(target_os = "windows")'.dependencies]
 winapi = {version = "0.3", features = ["winuser", "errhandlingapi", "processthreadsapi"]}
